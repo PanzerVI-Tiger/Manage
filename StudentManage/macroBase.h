@@ -7,26 +7,26 @@
 #define TupleType1(Type)  Tuple_ ## Type
 #define PTupleType1(Type)  PTuple_ ## Type
 #define DeclTuple1(Type) \
-    typedef struct {	 \
-        Type value;		 \
+    typedef struct {     \
+        Type value;      \
     } TupleType1(Type), *PTupleType1(Type)
 
 #define TupleType2(Type1, Type2)  Tuple_ ## Type1 ## _ ## Type2
 #define PTupleType2(Type1, Type2)  PTuple_ ## Type1 ## _ ## Type2
 #define DeclTuple2(Type1, Type2) \
-    DeclTuple1(Type2);		     \
-    typedef struct {			 \
-        Type1			  value; \
-        TupleType1(Type2) next;	 \
+    DeclTuple1(Type2);           \
+    typedef struct {             \
+        Type1             value; \
+        TupleType1(Type2) next;  \
     } TupleType2(Type1, Type2), *PTupleType2(Type1, Type2)
 
 #define TupleType3(Type1, Type2, Type3)  Tuple_ ## Type1 ## _ ## Type2 ## _ ## Type3
 #define PTupleType3(Type1, Type2, Type3)  PTuple_ ## Type1 ## _ ## Type2 ## _ ## Type3
 #define DeclTuple3(Type1, Type2, Type3) \
-    DeclTuple2(Type2, Type3);			\
-    typedef struct {					\
-        Type1					 value;	\
-        TupleType2(Type2, Type3) next;	\
+    DeclTuple2(Type2, Type3);           \
+    typedef struct {                    \
+        Type1                    value; \
+        TupleType2(Type2, Type3) next;  \
     } TupleType3(Type1, Type2, Type3), *PTupleType3(Type1, Type2, Type3)
 
 #define macroLinkToken2(left, right) left ## right
@@ -81,8 +81,8 @@
 #define forwardTransmit1(a) a
 #define forwardTransmit(...) __VA_ARGS__
 
-#define nameMangling2(mangling, a)		 mangling ## _ ## a
-#define nameMangling3(mangling, a, b)	 mangling ## _ ## a ## _ ## b
+#define nameMangling2(mangling, a)       mangling ## _ ## a
+#define nameMangling3(mangling, a, b)    mangling ## _ ## a ## _ ## b
 #define nameMangling4(mangling, a, b, c) mangling ## _ ## a ## _ ## b ## _ ## c
 #define nameMangling5(mangling, a, b, c, d) mangling ## _ ## a ## _ ## b ## _ ## c ## _ ## d
 #define nameMangling6(mangling, a, b, c, d, e) mangling ## _ ## a ## _ ## b ## _ ## c ## _ ## d ## _ ## e
@@ -92,7 +92,7 @@
 #define macroGetList2(arg1, arg2, ...) arg2
 
 #define macroProbe(x) x, 1
-#define macroCheck(...)		macroGetList2(__VA_ARGS__, 0)
+#define macroCheck(...)     macroGetList2(__VA_ARGS__, 0)
 #define macroIsListEmpty(x) macroCheck(macroLinkToken(macroTransmit(macroLinkToken, macroIsListEmpty_, x), 0))
 #define macroIsListEmpty_ macroProbe()
 

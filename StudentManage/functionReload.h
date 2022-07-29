@@ -7,10 +7,10 @@
 #define functionMangling1(funcName, Type) funcName ## _ ## Type
 #define functionMangling2(funcName, Type1, Type2) funcName ## _ ## Type1 ## _ ## Type2
 
-#define makeGenericArgsPTuplePair1(Type)		   Type: ((TupleType1(Type)*)(NULL))
+#define makeGenericArgsPTuplePair1(Type)           Type: ((TupleType1(Type)*)(NULL))
 #define makeGenericArgsPTuplePair2(Type1, Type2)   TupleType1(Type1)*: ((TupleType2(Type1, Type2)*)(NULL))
 
-#define makeTypeFunctionPair1(funcName, Type)		  Type:	  functionMangling1(funcName, Type)
+#define makeTypeFunctionPair1(funcName, Type)         Type:   functionMangling1(funcName, Type)
 #define makeTypeFunctionPair2(funcName, Type1, Type2) TupleType2(Type1, Type2)*: functionMangling2(funcName, Type1, Type2)
 
 #define makePTuple1(value, count, ...) \

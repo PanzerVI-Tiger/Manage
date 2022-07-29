@@ -11,7 +11,7 @@ typedef struct {
     uint32_t productsSize;
 } ProductsFileHead;
 
-static bool							    isInitial = false;
+static bool                             isInitial = false;
 static RBTree(ProductID, ProductMapped) products;
 
 static int compareIdRBtree(ProductID left, ProductID right) {
@@ -221,9 +221,9 @@ Vector(PProduct)* getProductsVector(bool isSort, bool reverse, SortWayProduct so
         return &result; // empty
     }
     
-    captureVector			= &result;
+    captureVector           = &result;
     inOrderRBTree(&products, &pushNodeInVector);
-    captureVector			= NULL;
+    captureVector           = NULL;
 
     if (!isSort) {
         return &result;
@@ -258,8 +258,8 @@ Vector(PProduct)* getProductsVector(bool isSort, bool reverse, SortWayProduct so
         case sortByID:
             // reverse
             for (size_t i = 0, j = sizeVector(&result); i < j; i++) {
-                PProduct temp				  = *atVector(&result, i);
-                *atVector(&result, i)		  = *atVector(&result, j - i - 1);
+                PProduct temp                 = *atVector(&result, i);
+                *atVector(&result, i)         = *atVector(&result, j - i - 1);
                 *atVector(&result, j - i - 1) = temp;
             }
             return &result;

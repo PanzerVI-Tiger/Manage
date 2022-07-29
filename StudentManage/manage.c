@@ -120,7 +120,7 @@ void loginPanel(void)
     }
     int password = atoi(buff);
     
-    account			   = getAccount();
+    account            = getAccount();
     LoginStatus status = account->vptr->login(id, password);
     
     switch (status) {
@@ -260,7 +260,7 @@ void registerPanel(void)
     gets_s(buff, buffSize);
     bool isVip = atoi(buff) == 1;
 
-    account	= getAccount();
+    account = getAccount();
     if (account->vptr->registerNewUser(id, password, name, isMale, phone, isVip)) {
         isChange = true;
         system("cls");
@@ -416,14 +416,14 @@ void buyProduct(void)
     if (status == 0) {
         fputs("商品不存在!\n"
               "按下回车继续>>> ", stdout);
-        gets_s(buff, buffSize);	
+        gets_s(buff, buffSize); 
         return;
     }
     
     if (status == -2) {
         fputs("库存不足!\n"
               "按下回车继续>>> ", stdout);
-        gets_s(buff, buffSize);	
+        gets_s(buff, buffSize); 
         return;
     }
     
@@ -438,7 +438,7 @@ void buyProduct(void)
             walletPanel();
         }
         status = user->vptr->buyProduct(productId, size);
-    }	
+    }   
     isChange = true;
     fputs("购买成功!\n"
           "按下回车继续>>> ", stdout);
@@ -682,7 +682,7 @@ void addAdminPanel(void)
     }
     long long phone = atoll(buff);
 
-    account	= getAccount();
+    account = getAccount();
     SuperAdmin pSuperAdmin = account->vptr->toSuperAdmin();
     if (pSuperAdmin->vptr->addAdmin(id, password, name, isMale, phone)) {
         isChange = true;
@@ -713,7 +713,7 @@ void removeAccountPanel(void)
     }
     int id = atoi(buff);
     
-    account	= getAccount();
+    account = getAccount();
     SuperAdmin pSuperAdmin = account->vptr->toSuperAdmin();
     if (pSuperAdmin->vptr->removeAccount(id)) {
         isChange = true;
@@ -887,7 +887,7 @@ void addProductPanel(void)
         fputs("商品发货地址过长, 请重新输入\n"
               ">>> ", stdout);
         gets_s(buff, buffSize);
-    }	
+    }   
     strcpy(product.mapped.shipAddress, buff);
 
     fputs("请输入商品价格(不超过6位有效数字)\n"
@@ -1019,7 +1019,7 @@ void changeProductPanel(void)
         fputs("商品发货地址过长, 请重新输入\n"
               ">>> ", stdout);
         gets_s(buff, buffSize);
-    }	
+    }   
     strcpy(product->mapped.shipAddress, buff);
 
     fputs("请输入商品价格(不超过6位有效数字)\n"

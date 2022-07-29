@@ -10,26 +10,26 @@
 PriorDeclVector(Product);
 
 typedef struct {
-    int32_t		type;
-    int32_t		password;
+    int32_t     type;
+    int32_t     password;
 } SuperAdminPrivate, AccountBase;
 
 typedef struct {
     SuperAdminPrivate;
-    char	    name[11];
-    bool	    isMale;
+    char        name[11];
+    bool        isMale;
     int64_t     phoneNumber;
 } AdminPrivate;
 
 typedef struct {
     AdminPrivate;
-    double			 money;
-    bool			 isVIP;
+    double           money;
+    bool             isVIP;
     Vector(Product)* products;
 } UserPrivate;
 
 typedef struct tagAccountInternal {
-    const VirtualTable_Account*	   vptr;
+    const VirtualTable_Account*    vptr;
     SuperAdminPrivate;
 } AccountInternal, *PAccountInternal;
 
@@ -39,12 +39,12 @@ typedef struct {
 } SuperAdminInternal, *PSuperAdminInternal;
 
 typedef struct tagAdminInternal {
-    const VirtualTable_Admin*	   vptr;
+    const VirtualTable_Admin*      vptr;
     AdminPrivate;
 } AdminInternal, *PAdminInternal;
 
 typedef struct {
-    const VirtualTable_User*	   vptr;
+    const VirtualTable_User*       vptr;
     UserPrivate;
 } UserInternal, *PUserInternal;
 
@@ -56,10 +56,10 @@ typedef struct {
 typedef struct {
     AccountID    id;
     AccountBase  headData;
-// 	unsigned char data[];  it's size is determined by account type
+//  unsigned char data[];  it's size is determined by account type
 } AccountsFileNode;
 
 
 #include "PriorDeclRBTree.h"
-PriorDeclRBTree(AccountID, PAccountInternal);	
+PriorDeclRBTree(AccountID, PAccountInternal);   
 typedef PairRBTree(AccountID, PAccountInternal) AccountNode;

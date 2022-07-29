@@ -16,13 +16,13 @@ static const VirtualTable_Account vptrAccount = {
     .accountType     = &accountType,
     .cancel          = &cancelAccount,
     .changePassword  = &changeAccountPassword,
-    .login			 = &loginAccount,
+    .login           = &loginAccount,
     .loginState      = &accountLoginState,
-    .logout			 = &logoutAccount,
-    .toAccount		 = &toAccount,
-    .toAdmin		 = &toAdmin,
+    .logout          = &logoutAccount,
+    .toAccount       = &toAccount,
+    .toAdmin         = &toAdmin,
     .toSuperAdmin    = &toSuperAdmin,
-    .toUser			 = &toUser,
+    .toUser          = &toUser,
     .registerNewUser = &registerNewUser,
     .getProducts     = &getProductsVector
 };
@@ -31,13 +31,13 @@ static const VirtualTable_User vptrUser = {
     .accountType     = &accountType,
     .cancel          = &cancelAccount,
     .changePassword  = &changeAccountPassword,
-    .login			 = &loginAccount,
+    .login           = &loginAccount,
     .loginState      = &accountLoginState,
-    .logout			 = &logoutAccount,
-    .toAccount		 = &toAccount,
-    .toAdmin		 = &toAdmin,
+    .logout          = &logoutAccount,
+    .toAccount       = &toAccount,
+    .toAdmin         = &toAdmin,
     .toSuperAdmin    = &toSuperAdmin,
-    .toUser			 = &toUser,
+    .toUser          = &toUser,
     .registerNewUser = &registerNewUser,
     .getProducts     = &getProductsVector,
     .buyProduct      = &buyProductUser,
@@ -49,13 +49,13 @@ static const VirtualTable_Admin vptrAdmin = {
     .accountType     = &accountType,
     .cancel          = &cancelAccount,
     .changePassword  = &changeAccountPassword,
-    .login			 = &loginAccount,
+    .login           = &loginAccount,
     .loginState      = &accountLoginState,
-    .logout			 = &logoutAccount,
-    .toAccount		 = &toAccount,
-    .toAdmin		 = &toAdmin,
+    .logout          = &logoutAccount,
+    .toAccount       = &toAccount,
+    .toAdmin         = &toAdmin,
     .toSuperAdmin    = &toSuperAdmin,
-    .toUser			 = &toUser,
+    .toUser          = &toUser,
     .registerNewUser = &registerNewUser,
     .getProducts     = &getProductsVector,
     .getAccounts     = &getAccountsSuperAdmin
@@ -65,13 +65,13 @@ static const VirtualTable_SuperAdmin vptrSuperAdmin = {
     .accountType     = &accountType,
     .cancel          = &cancelAccount,
     .changePassword  = &changeAccountPassword,
-    .login			 = &loginAccount,
+    .login           = &loginAccount,
     .loginState      = &accountLoginState,
-    .logout			 = &logoutAccount,
-    .toAccount		 = &toAccount,
-    .toAdmin		 = &toAdmin,
+    .logout          = &logoutAccount,
+    .toAccount       = &toAccount,
+    .toAdmin         = &toAdmin,
     .toSuperAdmin    = &toSuperAdmin,
-    .toUser			 = &toUser,
+    .toUser          = &toUser,
     .registerNewUser = &registerNewUser,
     .getProducts     = &getProductsVector,
     .addProduct      = &addProduct,
@@ -90,8 +90,8 @@ static AccountInternal  emptyOperatorObject = {
 static AccountNode      emptyOperatorNode   = {
     .key = 0, .mapped = &emptyOperatorObject
 };
-static AccountNode*		soleObject		    = &emptyOperatorNode;
-static LoginStatus		status			    = noLoad;
+static AccountNode*     soleObject          = &emptyOperatorNode;
+static LoginStatus      status              = noLoad;
 
 static int compareIdRBtree(AccountID left, AccountID right) {
     if (left < right) {
@@ -250,7 +250,7 @@ static void countAccountsByteSize(AccountNode* account)
 {
     switch (account->mapped->type) {
     case userAccount:
-        captureSize += sizeof(AccountID)             + sizeof(UserInternal)	- 
+        captureSize += sizeof(AccountID)             + sizeof(UserInternal) - 
                        sizeof(account->mapped->vptr) + sizeof(int32_t)      + 
                        sizeVector(((UserInternal*)(account->mapped))->products) * sizeof(Product);
         break;
@@ -285,7 +285,7 @@ static void storeNode(AccountNode* account)
     case userAccount:
         // store user except products, [other, size, product[size]]
         fwrite((char*)(account->mapped)  + sizeof(account->mapped->vptr),
-               sizeof(UserInternal)		 - sizeof(account->mapped->vptr) -
+               sizeof(UserInternal)      - sizeof(account->mapped->vptr) -
                sizeof(Vector(Product)*), 1, captureFile);
         // store products
         int32_t size = sizeVector(((UserInternal*)(account->mapped))->products);
@@ -301,7 +301,7 @@ static void storeNode(AccountNode* account)
         
     case superAdminAccount:
         fwrite((char*)(account->mapped)  + sizeof(account->mapped->vptr),
-               sizeof(SuperAdminInternal)	- sizeof(account->mapped->vptr), 1, captureFile);
+               sizeof(SuperAdminInternal)   - sizeof(account->mapped->vptr), 1, captureFile);
         break;
     }
 }
@@ -343,7 +343,7 @@ LoginStatus loginAccount(int account, int password)
     }
 
     soleObject = result;
-    status	   = loginSuccess;
+    status     = loginSuccess;
 
     return loginSuccess;
 }
@@ -385,14 +385,14 @@ bool registerNewUser(int account, int password, const char* name, bool isMale, i
     }
     
     UserInternal* pUserAccount = malloc(sizeof(UserInternal));
-    pUserAccount->vptr		   = &vptrUser;
+    pUserAccount->vptr         = &vptrUser;
     pUserAccount->password     = password;
     strcpy(pUserAccount->name, name);
-    pUserAccount->isMale	   = isMale;
+    pUserAccount->isMale       = isMale;
     pUserAccount->phoneNumber  = phoneNumber;
-    pUserAccount->isVIP		   = isVIP;
-    pUserAccount->type		   = userAccount;
-    pUserAccount->money		   = 0;
+    pUserAccount->isVIP        = isVIP;
+    pUserAccount->type         = userAccount;
+    pUserAccount->money        = 0;
     pUserAccount->products     = malloc(sizeof(Vector(Product)));
     *pUserAccount->products    = createVector(Product)(0, 0);
     
@@ -406,7 +406,7 @@ LoginStatus accountLoginState(void)
     return status;
 }
 
-AccountType	accountType(void)
+AccountType accountType(void)
 {
     return soleObject->mapped->type;
 }
@@ -505,7 +505,7 @@ int buyProductUser(ProductID productID, uint32_t size)
     return 1;
 }
 
-double	getMoneyUser(void)
+double  getMoneyUser(void)
 {
     if (status == noLoad || status == noLogin || soleObject->mapped->type != userAccount) {
         return 0;
@@ -525,12 +525,12 @@ bool addAdmin(int account, int password, const char* name, bool isMale, int64_t 
     }
     
     AdminInternal* pAdmin = malloc(sizeof(AdminInternal));
-    pAdmin->vptr		  = &vptrAdmin;
+    pAdmin->vptr          = &vptrAdmin;
     pAdmin->password      = password;
     strcpy(pAdmin->name, name);
-    pAdmin->isMale	      = isMale;
+    pAdmin->isMale        = isMale;
     pAdmin->phoneNumber   = phoneNumber;
-    pAdmin->type		  = adminAccount;
+    pAdmin->type          = adminAccount;
 
     insertRBTree(&accounts, account, (AccountInternal**)&pAdmin, false);
     

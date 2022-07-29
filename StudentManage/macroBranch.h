@@ -74,7 +74,7 @@
 #define macroIf_31(statement) statement
 #define macroIf_32(statement) statement
 
-#define macroIf(cond)	  macroIf_ ## cond
+#define macroIf(cond)     macroIf_ ## cond
 #define macroIfElse(cond) macroIfElse_ ## cond
 
 typedef struct { bool value; } TrueType;

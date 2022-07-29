@@ -40,42 +40,42 @@
 
 #define macroUnfoldCall0(getSeparator, varargCallable, fixedCount, ...)
 #define macroUnfoldCall1(getSeparator, varargCallable, fixedCount, argsCount, ...) \
-    macroTransmit0(varargCallable, argsCount,									   \
-    reserveList(fixedCount, __VA_ARGS__)										   \
-    macroIf(fixedCount)(macroIf(argsCount)(getSeparator()))						   \
+    macroTransmit0(varargCallable, argsCount,                                      \
+    reserveList(fixedCount, __VA_ARGS__)                                           \
+    macroIf(fixedCount)(macroIf(argsCount)(getSeparator()))                        \
     reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))
 
-#define macroUnfoldCall2(getSeparator, varargCallable, fixedCount, argsCount, ...)							   \
-    macroTransmit1(varargCallable, argsCount,																   \
-    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())								   \
-    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))											   \
-    getSeparator() macroTransmit1(macroUnfoldCall1, getSeparator, varargCallable, fixedCount,				   \
-        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))							   \
-        macroIf(fixedCount)(																				   \
+#define macroUnfoldCall2(getSeparator, varargCallable, fixedCount, argsCount, ...)                             \
+    macroTransmit1(varargCallable, argsCount,                                                                  \
+    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())                                   \
+    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))                                               \
+    getSeparator() macroTransmit1(macroUnfoldCall1, getSeparator, varargCallable, fixedCount,                  \
+        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))                             \
+        macroIf(fixedCount)(                                                                                   \
             macroTransmit1(macroIf, reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))) \
                 (separatorComma()))  \
         reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(macroIf(argsCount)(separatorComma())) \
         cutOffList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__))))
 
-#define macroUnfoldCall3(getSeparator, varargCallable, fixedCount, argsCount, ...)							   \
-    macroTransmit2(varargCallable, argsCount,																   \
-    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())								   \
-    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))											   \
-    getSeparator() macroTransmit2(macroUnfoldCall2, getSeparator, varargCallable, fixedCount,				   \
-        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))							   \
-        macroIf(fixedCount)(																				   \
+#define macroUnfoldCall3(getSeparator, varargCallable, fixedCount, argsCount, ...)                             \
+    macroTransmit2(varargCallable, argsCount,                                                                  \
+    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())                                   \
+    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))                                               \
+    getSeparator() macroTransmit2(macroUnfoldCall2, getSeparator, varargCallable, fixedCount,                  \
+        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))                             \
+        macroIf(fixedCount)(                                                                                   \
             macroTransmit2(macroIf, reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))) \
                 (separatorComma()))  \
         reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(macroIf(argsCount)(separatorComma())) \
         cutOffList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__))))
 
-#define macroUnfoldCall4(getSeparator, varargCallable, fixedCount, argsCount, ...)							   \
-    macroTransmit3(varargCallable, argsCount,																   \
-    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())								   \
-    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))											   \
-    getSeparator() macroTransmit3(macroUnfoldCall3, getSeparator, varargCallable, fixedCount,				   \
-        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))							   \
-        macroIf(fixedCount)(																				   \
+#define macroUnfoldCall4(getSeparator, varargCallable, fixedCount, argsCount, ...)                             \
+    macroTransmit3(varargCallable, argsCount,                                                                  \
+    reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(getSeparator())                                   \
+    reserveList(argsCount, cutOffList(fixedCount, __VA_ARGS__)))                                               \
+    getSeparator() macroTransmit3(macroUnfoldCall3, getSeparator, varargCallable, fixedCount,                  \
+        reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))                             \
+        macroIf(fixedCount)(                                                                                   \
             macroTransmit3(macroIf, reserveList(1, cutOffList(fixedCount, cutOffList(argsCount, __VA_ARGS__)))) \
                 (separatorComma()))  \
         reserveList(fixedCount, __VA_ARGS__) macroIf(fixedCount)(macroIf(argsCount)(separatorComma())) \
