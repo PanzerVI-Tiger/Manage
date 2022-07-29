@@ -109,7 +109,7 @@
     }                                                                                                                  \
                                                                                                                        \
     /* inOrderRBTreeNode */                                                                                            \
-    inline void nameMangling3(inOrderRBTreeNode, KeyType, MappedType)                                                      \
+    inline void nameMangling3(inOrderRBTreeNode, KeyType, MappedType)                                                  \
         (RBTreeNode(KeyType, MappedType)* self, UnaryFunctionRBtree(KeyType, MappedType) func)                         \
     {                                                                                                                  \
         if (self == NULL) {                                                                                            \

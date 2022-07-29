@@ -230,7 +230,7 @@
 
 macroTransmit(makeVectorDecl, TypesPackVector());
 
-#define createVector(ElementType)                      linkPVectorName(createVector,       ElementType)
+#define createVector(ElementType)                      linkPVectorName(createVector,      ElementType)
 #define destroyVector(pVector)                         packReloadCall1(destroyVector,     pVector, TypePackPVector)(pVector)
 #define capacityVector(pVector)                        packReloadCall1(capacityVector,    pVector, TypePackPVector)(pVector)
 #define sizeVector(pVector)                            packReloadCall1(sizeVector,        pVector, TypePackPVector)(pVector)
