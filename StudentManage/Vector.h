@@ -6,7 +6,7 @@
 
 #include "macro_meta.h"
 
-/****************************************************** head only  ******************************************************/
+/****************************************************** head only *******************************************************/
 
 #define Vector(ElementType)                    nameMangling2(Vector,              ElementType)
 #define PVector(ElementType)                   nameMangling2(PVector,             ElementType)

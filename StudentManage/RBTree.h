@@ -8,7 +8,7 @@
 
 #include "macro_meta.h"
 
-/***************************************************** head only  *****************************************************/
+/***************************************************** head only ******************************************************/
 
 #define RBTreeNode(KeyType, MappedType)          nameMangling3(RBTreeNode, KeyType, MappedType)
 #define RBTree(KeyType, MappedType)              nameMangling3(RBTree, KeyType,  MappedType)
