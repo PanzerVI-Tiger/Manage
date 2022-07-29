@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\macro">
+      <UniqueIdentifier>{fd2f468a-461c-47cd-9204-cc030ede2c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\manage">
+      <UniqueIdentifier>{126d390f-54cd-4128-8900-ccc6422552ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\dataStruct">
+      <UniqueIdentifier>{bc162f02-f550-400d-bef0-98444b2b9913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\manage\account">
+      <UniqueIdentifier>{9e89683a-a924-4431-9db8-58da6f91b7fe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="account.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="products.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="manage.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="macroBranch.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macroBase.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macroLoop.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="functionReload.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="macroList.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="account.h">
+      <Filter>头文件\manage\account</Filter>
+    </ClInclude>
+    <ClInclude Include="macro_meta.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="manage.h">
+      <Filter>头文件\manage</Filter>
+    </ClInclude>
+    <ClInclude Include="RBTree.h">
+      <Filter>头文件\dataStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="macroCalculate.h">
+      <Filter>头文件\macro</Filter>
+    </ClInclude>
+    <ClInclude Include="products.h">
+      <Filter>头文件\manage\account</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>头文件\dataStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorDeclRBTree.h">
+      <Filter>头文件\dataStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorDeclVector.h">
+      <Filter>头文件\dataStruct</Filter>
+    </ClInclude>
+    <ClInclude Include="account_internal.h">
+      <Filter>头文件\manage\account</Filter>
+    </ClInclude>
+    <ClInclude Include="InitializerList.h">
+      <Filter>头文件\dataStruct</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
