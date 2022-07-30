@@ -8,15 +8,15 @@
 
 /****************************************************** head only *******************************************************/
 
-#define Vector(ElementType)                    nameMangling2(Vector,              ElementType)
-#define PVector(ElementType)                   nameMangling2(PVector,             ElementType)
-#define CompareVector(ElementType)             nameMangling2(CompareVector,       ElementType)
+#define Vector(             ElementType)       nameMangling2(Vector,              ElementType)
+#define PVector(            ElementType)       nameMangling2(PVector,             ElementType)
+#define CompareVector(      ElementType)       nameMangling2(CompareVector,       ElementType)
 #define UnaryFunctionVector(ElementType)       nameMangling2(UnaryFunctionVector, ElementType)
 
 #define linkPVectorName(mangling, ElementType) nameMangling3(mangling, PVector, ElementType)
 
 #define DeclVector(ElementType)                                                                                          \
-    typedef int  (*CompareVector(ElementType))      (const ElementType* left, const ElementType* right);                 \
+    typedef int  (*CompareVector(      ElementType))(const ElementType* left, const ElementType* right);                 \
     typedef void (*UnaryFunctionVector(ElementType))(ElementType*  element);                                             \
     typedef struct nameMangling2(Vector, ElementType) {                                                                  \
         ElementType* data;                                                                                               \
@@ -230,20 +230,20 @@
 
 macroTransmit(makeVectorDecl, TypesPackVector());
 
-#define createVector(ElementType)                      linkPVectorName(createVector,      ElementType)
-#define destroyVector(pVector)                         packReloadCall1(destroyVector,     pVector, TypePackPVector)(pVector)
-#define capacityVector(pVector)                        packReloadCall1(capacityVector,    pVector, TypePackPVector)(pVector)
-#define sizeVector(pVector)                            packReloadCall1(sizeVector,        pVector, TypePackPVector)(pVector)
-#define atVector(pVector, index)                       packReloadCall1(atVector,          pVector, TypePackPVector)(pVector, index)
-#define frontVector(pVector)                           packReloadCall1(frontVector,       pVector, TypePackPVector)(pVector)
-#define backVector(pVector)                            packReloadCall1(backVector,        pVector, TypePackPVector)(pVector)
-#define dataVector(pVector)                            packReloadCall1(dataVector,        pVector, TypePackPVector)(pVector)
-#define foreachVector(pVector, unaryFunc, isReverse)   packReloadCall1(foreachVector,     pVector, TypePackPVector)(pVector, unaryFunc, isReverse)
-#define reserveVector(pVector, size)                   packReloadCall1(reserveVector,     pVector, TypePackPVector)(pVector, size)
-#define resizeVector(pVector, size)                    packReloadCall1(resizeVector,      pVector, TypePackPVector)(pVector, size)
-#define pushBackVector(pVector, pValue)                packReloadCall1(pushBackVector,    pVector, TypePackPVector)(pVector, pValue)
-#define popBackVector(pVector)                         packReloadCall1(popBackVector,     pVector, TypePackPVector)(pVector)
-#define insertVector(pVector, index, pValue)           packReloadCall1(insertVector,      pVector, TypePackPVector)(pVector, index, pValue)
-#define insertArrayVector(pVector, index, array, size) packReloadCall1(insertArrayVector, pVector, TypePackPVector)(pVector, index, array, size)
-#define eraseVector(pVector, index)                    packReloadCall1(eraseVector,       pVector, TypePackPVector)(pVector, index)
-#define sortVector(pVector, compare)                   packReloadCall1(sortVector,        pVector, TypePackPVector)(pVector, compare)
+#define createVector(     ElementType                    ) linkPVectorName(createVector,      ElementType)
+#define destroyVector(    pVector                        ) packReloadCall1(destroyVector,     pVector, TypePackPVector)(pVector)
+#define capacityVector(   pVector                        ) packReloadCall1(capacityVector,    pVector, TypePackPVector)(pVector)
+#define sizeVector(       pVector                        ) packReloadCall1(sizeVector,        pVector, TypePackPVector)(pVector)
+#define atVector(         pVector, index                 ) packReloadCall1(atVector,          pVector, TypePackPVector)(pVector, index)
+#define frontVector(      pVector                        ) packReloadCall1(frontVector,       pVector, TypePackPVector)(pVector)
+#define backVector(       pVector                        ) packReloadCall1(backVector,        pVector, TypePackPVector)(pVector)
+#define dataVector(       pVector                        ) packReloadCall1(dataVector,        pVector, TypePackPVector)(pVector)
+#define foreachVector(    pVector, unaryFunc, isReverse  ) packReloadCall1(foreachVector,     pVector, TypePackPVector)(pVector, unaryFunc, isReverse)
+#define reserveVector(    pVector, size                  ) packReloadCall1(reserveVector,     pVector, TypePackPVector)(pVector, size)
+#define resizeVector(     pVector, size                  ) packReloadCall1(resizeVector,      pVector, TypePackPVector)(pVector, size)
+#define pushBackVector(   pVector, pValue                ) packReloadCall1(pushBackVector,    pVector, TypePackPVector)(pVector, pValue)
+#define popBackVector(    pVector                        ) packReloadCall1(popBackVector,     pVector, TypePackPVector)(pVector)
+#define insertVector(     pVector, index,     pValue     ) packReloadCall1(insertVector,      pVector, TypePackPVector)(pVector, index, pValue)
+#define insertArrayVector(pVector, index,     array, size) packReloadCall1(insertArrayVector, pVector, TypePackPVector)(pVector, index, array, size)
+#define eraseVector(      pVector, index                 ) packReloadCall1(eraseVector,       pVector, TypePackPVector)(pVector, index)
+#define sortVector(       pVector, compare               ) packReloadCall1(sortVector,        pVector, TypePackPVector)(pVector, compare)
