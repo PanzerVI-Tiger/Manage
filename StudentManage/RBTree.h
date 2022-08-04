@@ -10,11 +10,11 @@
 
 /***************************************************** head only ******************************************************/
 
-#define RBTreeNode(         KeyType, MappedType) nameMangling3(RBTreeNode, KeyType, MappedType)
-#define RBTree(             KeyType, MappedType) nameMangling3(RBTree, KeyType,  MappedType)
-#define PRBTree(            KeyType, MappedType) nameMangling3(PRBTree, KeyType, MappedType)
-#define PairRBTree(         KeyType, MappedType) nameMangling3(PairRBTree, KeyType,  MappedType)
-#define CompareRBTree(      KeyType, MappedType) nameMangling3(CompareRBTree, KeyType,  MappedType)
+#define RBTreeNode(         KeyType, MappedType) nameMangling3(RBTreeNode,          KeyType, MappedType)
+#define RBTree(             KeyType, MappedType) nameMangling3(RBTree,              KeyType,  MappedType)
+#define PRBTree(            KeyType, MappedType) nameMangling3(PRBTree,             KeyType, MappedType)
+#define PairRBTree(         KeyType, MappedType) nameMangling3(PairRBTree,          KeyType,  MappedType)
+#define CompareRBTree(      KeyType, MappedType) nameMangling3(CompareRBTree,       KeyType,  MappedType)
 #define UnaryFunctionRBtree(KeyType, MappedType) nameMangling3(UnaryFunctionRBtree, KeyType,  MappedType)
 
 #define linkPRBTreeName(mangling, KeyType, MappedType) \

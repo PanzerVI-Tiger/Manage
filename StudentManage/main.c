@@ -10,6 +10,5 @@ int main(void)
 {
     mainPanel();
     
-    
     return 0;
 }
